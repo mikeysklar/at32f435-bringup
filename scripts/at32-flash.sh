@@ -10,6 +10,9 @@ eval "$("$(dirname "$0")/at32-find.sh")"
 probe="2e3c:f000:${ATLINK_SERIAL}"
 case "$f" in
   *.bin) probe-rs download --chip "$CHIP" --probe "$probe" --binary-format bin --base-address "$base" "$f" ;;
+  # --binary-format defaults to "target", which for this chip means ELF, so an
+  # Intel HEX file is parsed as ELF and rejected as "Unknown file magic".
+  *.hex) probe-rs download --chip "$CHIP" --probe "$probe" --binary-format hex "$f" ;;
   *)     probe-rs download --chip "$CHIP" --probe "$probe" "$f" ;;
 esac
 probe-rs reset --chip "$CHIP" --probe "$probe"
