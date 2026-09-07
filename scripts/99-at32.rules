@@ -1,0 +1,5 @@
+# Artery AT-Link / AT-Link-EZ (CMSIS-DAP v1 HID + v2 bulk + CDC)
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+KERNEL=="hidraw*", SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", MODE="0660", GROUP="plugdev", TAG+="uaccess"
+# Artery ROM DFU bootloader ("Artery-Tech DFU in FS Mode")
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="0660", GROUP="plugdev", TAG+="uaccess"
